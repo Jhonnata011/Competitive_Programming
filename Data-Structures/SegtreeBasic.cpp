@@ -2,7 +2,6 @@
 
 using namespace std;
 
-
 struct node
 {
     long long v;
