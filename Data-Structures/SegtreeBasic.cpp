@@ -1,5 +1,4 @@
-struct node
-{
+struct node {
     long long v;
 
     node (long long v_): v(v_) {}
