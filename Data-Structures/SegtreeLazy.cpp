@@ -1,9 +1,4 @@
-#include <bits/stdc++.h>
-
-using namespace std;
-
-struct node
-{
+struct node {
     long long v;
     node (long long v_): v(v_) {}
     node (): v(0) {}
