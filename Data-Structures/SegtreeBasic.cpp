@@ -27,7 +27,7 @@ void build (int p, int l, int r) {
     segtree[p] = merge(segtree[2*p], segtree[2*p+1]);
 }
 
-void uptade (int p, int l, int r, int idx, long long v) {
+void update (int p, int l, int r, int idx, long long v) {
 
     if (l == r) {
         segtree[p] = node(v);
@@ -35,8 +35,8 @@ void uptade (int p, int l, int r, int idx, long long v) {
     }
 
     int mid = (l + r) / 2;
-    if (idx <= mid) uptade (2*p, l, mid, idx, v);
-    else uptade(2*p+1, mid+1, r, idx, v);
+    if (idx <= mid) update (2*p, l, mid, idx, v);
+    else update(2*p+1, mid+1, r, idx, v);
 
     segtree[p] = merge(segtree[2*p], segtree[2*p+1]);
 }
