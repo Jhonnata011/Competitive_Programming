@@ -23,6 +23,7 @@ vector <vector <int>> adj;
 vector <long long> arr;
 vector <int> tin;
 vector <int> tout;
+vector <int> parent;
 int t = 1;
 
 void dfs (int v, int p) {
@@ -31,10 +32,11 @@ void dfs (int v, int p) {
 
     for (int u: adj[v]) {
         if (u == p) continue;
+        parent[u] = v;
         dfs(u, v);
     }
 
-    tout[v] = t;
+    tout[v] = t-1;
 }
 
 int main() {
@@ -48,6 +50,7 @@ int main() {
     arr.resize(n+1);
     tin.resize(n+1);
     tout.resize(n+1);
+    parent.resize(n+1);
     bit.resize(n+1);
 
     for (int i = 1; i<=n; i++) cin >> arr[i];
@@ -77,7 +80,10 @@ int main() {
         
         else {
             int idx; cin >> idx;
-            long long ans = query(tin[idx], tout[idx]);
+            long long ans = query(1, tin[idx]);
+            if (parent[idx] != 0) {
+                ans -= query(tin[parent[idx]], tin[idx]);
+            }
             cout << ans << "\n";
         }
     }
