@@ -7,10 +7,7 @@ int timer;
 void dfs(int v, int p_edge = -1) {
     tin[v] = low[v] = ++timer;
     
-    for (auto& edge : adj[v]) {
-        int to = edge.first;
-        int edge_id = edge.second;
-        
+    for (auto [to, edge_id]: adj[v]) {
         if (edge_id == p_edge) continue;
         
         if (tin[to]) {
